@@ -197,44 +197,22 @@ void BST::spiralorder(Node *root){
 		
 
 int main(){
-	BT *b=new BST;
-	char ch='y';
-	int opt,data;
-	cout<<"Enter data to create root:";
-	cin>>data;
-	b->insert(data);
-	while(ch=='y'){
-		cout<<"\n1.Insert\n2.Inorder\n3.Preorder\n4.Postorder\n5.Level order\n6.Spiral order\n";
-		cout<<"\nEnter option:";
-		cin>>opt;
-		switch(opt){
-			case 1:
-				cout<<"\nEnter data to insert:";
-				cin>>data;
-				b->insert(data);
-				break;
-			case 2:
-				cout<<"\nInorder traversal"<<endl;
-				b->inorder(root);
-				break;
-			case 3:
-				cout<<"\nPreorder"<<endl;
-				b->preorder(root);
-				break;
-			case 4:
-				cout<<"\nPostorder"<<endl;
-				b->postorder(root);
-				break;
-			case 5:
-				cout<<"\nLevelorder"<<endl;
-				b->levelorder(root);
-				break;
-			case 6:
-				cout<<"\nSpiral order"<<endl;
-				b->spiralorder(root);
-				break;
-			default:exit(0);
-		}
-	}
+	BST *b=new BST;
+	b->insert(4);
+	b->insert(5);
+	b->insert(10);
+	b->insert(2);
+	b->insert(1);
+	b->insert(3);
+	b->insert(6);
+	b->insert(11);
+	cout<<endl;
+	cout<<"tree height: "<<b->treeHeight(root)<<endl;
+	cout<<"\ninorder"<<endl;
+	b->inorder(root);
+	cout<<"\nlevel order"<<endl;
+	b->levelorder(root);
+	cout<<"\nspiral"<<endl;
+	b->spiralorder(root);
 	return 0;
 	}
