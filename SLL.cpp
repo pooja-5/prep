@@ -78,8 +78,6 @@ void LL::insertNode(int data,int pos){
                 }
                 newNode->setNext(ptr->getNext());
                 ptr->setNext(newNode);
-            	newNode->setNext(ptr->getNext());
-                ptr->setNext(newNode);
         }
 
 
@@ -94,7 +92,37 @@ void LL::printNodes(){
                         cout<<ptr->getData()<<" ";
                         ptr=ptr->getNext();
                 }
+		cout<<endl;
         }
+}
+void LL::deleteNode(int pos){
+	Node *ptr=head;
+	if(pos==1){
+		cout<<"\nDelete node at the beginning:"<<endl;
+		head=ptr->getNext();
+		delete(ptr);
+		return;
+	}
+	else if(pos==-1){
+		cout<<"\nDelete node at the end:"<<endl;
+		while(ptr->getNext()->getNext()!=NULL)
+			ptr=ptr->getNext();
+		//cout<<"\ndata"<<ptr->getData()<<endl;
+		Node *temp=ptr->getNext();
+		ptr->setNext(NULL);
+		delete(temp);
+	}
+	else{
+		cout<<"\ndelete node from pos: "<<pos<<endl;
+		int count=1;
+		while(count<pos-1){
+			ptr=ptr->getNext();
+			count++;
+		}
+		Node *temp=ptr->getNext();
+		ptr->setNext(ptr->getNext()->getNext());
+		delete(temp);
+	}
 }
 int main(){
         LL l;
@@ -106,7 +134,17 @@ int main(){
         l.insertNode(6,-1);
         l.insertNode(7,3);
         l.insertNode(8,4);
+	l.insertNode(10,1);
+	l.insertNode(3,1);
         l.printNodes();
+	l.deleteNode(1);
+	l.printNodes();
+	l.deleteNode(-1);
+	l.printNodes();
+	l.deleteNode(-1);
+	l.printNodes();
+	l.deleteNode(4);
+	l.printNodes();
         return 0;
 }
 
